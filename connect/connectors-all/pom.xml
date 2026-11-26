@@ -77,6 +77,7 @@
                   <excludes>
                     <exclude>org/apache/hc/client5/http/impl/classic/ContentCompressionExec.class</exclude>
                     <exclude>org/apache/hc/client5/http/impl/classic/InternalHttpClient.class</exclude>
+                    <exclude>org/apache/hc/client5/http/ssl/AbstractClientTlsStrategy.class</exclude>
                   </excludes>
                 </filter>
               </filters>

@@ -1,7 +1,7 @@
 name: Renovate auto-merge
 on:
-  pull_request:
-    types: [ opened, synchronize, reopened ]
+  workflow_dispatch:
+
 jobs:
   all-checks-passed:
     if: contains(github.event.pull_request.labels.*.name, 'automerge') && github.actor == 'renovate[bot]'

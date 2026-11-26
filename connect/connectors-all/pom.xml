@@ -32,6 +32,12 @@
       <artifactId>camunda-connect-soap-http-client</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -56,6 +62,24 @@
                   <exclude>org.slf4j:*</exclude>
                 </excludes>
               </artifactSet>
+              <!-- The patched copies of these classes in src/main/java replace
+                   the ones shipped by the shaded httpcore5 / httpclient5 jars -->
+              <filters>
+                <filter>
+                  <artifact>org.apache.httpcomponents.core5:httpcore5</artifact>
+                  <excludes>
+                    <exclude>org/apache/hc/core5/http/config/Http1Config.class</exclude>
+                    <exclude>org/apache/hc/core5/http/config/Http1Config$Builder.class</exclude>
+                  </excludes>
+                </filter>
+                <filter>
+                  <artifact>org.apache.httpcomponents.client5:httpclient5</artifact>
+                  <excludes>
+                    <exclude>org/apache/hc/client5/http/impl/classic/ContentCompressionExec.class</exclude>
+                    <exclude>org/apache/hc/client5/http/impl/classic/InternalHttpClient.class</exclude>
+                  </excludes>
+                </filter>
+              </filters>
               <relocations>
                 <relocation>
                   <pattern>org.apache</pattern>
